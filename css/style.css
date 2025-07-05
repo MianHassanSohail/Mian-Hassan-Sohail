@@ -1,3 +1,5 @@
+/* --- Paste this at the end of your style.css file --- */
+
 /*----------------------------------------------------
 @File: Default Styles
 @Author: SPONDON IT
@@ -1908,16 +1910,7 @@ h6 {
 .single-input-primary:focus {
   outline: none;
   border: 1px solid #f8b600; }
-.portfolio_box .single_portfolio img,
-.portfolio_box .single_portfolio video {
-    width: 350px;         /* Set your desired width */
-    height: 220px;        /* Set your desired height */
-    object-fit: cover;    /* Ensures the content covers the box */
-    border-radius: 8px;   /* Optional: for rounded corners */
-    display: block;
-    margin: 0 auto;
-}
-
+  
 .single-input-accent {
   display: block;
   width: 100%;
@@ -2701,6 +2694,7 @@ h6 {
     visibility: visible;
     top: 50%;
     left: 50%; }
+
 .portfolio-scroller {
     display: grid;
     grid-auto-flow: column;
@@ -3012,12 +3006,13 @@ h6 {
 
 .portfolio_box .single_portfolio img,
 .portfolio_box .single_portfolio video {
-    width: 350px;        /* Set your desired width */
+    width: 100%;       /* MODIFIED for grid responsiveness */
     height: 220px;       /* Set your desired height */
     object-fit: cover;   /* Ensures content fills the box */
+	border-radius: 8px;  /* MODIFIED for consistency */
     display: block;
-    margin: 0 auto;
 }
+
 .portfolio-scroller {
     display: grid;
     grid-auto-flow: column;
@@ -3358,3 +3353,85 @@ h6 {
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+
+/* ==========================================================================
+   Custom Portfolio Carousel Styles
+   ========================================================================== */
+
+.portfolio_box .short_info {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.portfolio-carousel-container {
+    position: relative;
+    padding-bottom: 50px; /* Space for dots */
+}
+
+.portfolio-carousel-wrapper {
+    overflow: hidden;
+}
+
+.portfolio-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.portfolio-page {
+    flex: 0 0 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 40px 30px; /* row-gap column-gap */
+    padding: 0 5px; /* some padding to avoid touching edges */
+    box-sizing: border-box;
+}
+
+/* Dots Navigation */
+.portfolio-dots-container {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.portfolio-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #d8d8d8;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.portfolio-dot:hover {
+	transform: scale(1.2);
+}
+
+.portfolio-dot.active {
+    background-color: #854fee; 
+	transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .portfolio-page {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .portfolio-page {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 50px;
+    }
+    
+    .portfolio_box .single_portfolio img,
+    .portfolio_box .single_portfolio video {
+        height: 250px; 
+    }
+}
