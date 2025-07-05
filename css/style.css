@@ -1,5 +1,3 @@
-/* --- Paste this at the end of your style.css file --- */
-
 /*----------------------------------------------------
 @File: Default Styles
 @Author: SPONDON IT
@@ -2638,23 +2636,6 @@ h6 {
         .portfolio_area .filters ul li {
           margin-right: 20px; } }
 
-.portfolio_box {
-  margin-bottom: 80px; }
-  @media (max-width: 767px) {
-    .portfolio_box {
-      margin-bottom: 35px; } }
-  .portfolio_box .short_info {
-    margin-top: 30px; }
-    @media (max-width: 767px) {
-      .portfolio_box .short_info {
-        margin-top: 20px; } }
-    .portfolio_box .short_info h4 {
-      text-transform: uppercase;
-      font-size: 20px;
-      margin-bottom: 0px; }
-      .portfolio_box .short_info h4 a {
-        color: #000000; }
-
 .single_portfolio {
   position: relative; }
   .single_portfolio .overlay {
@@ -2694,31 +2675,6 @@ h6 {
     visibility: visible;
     top: 50%;
     left: 50%; }
-
-.portfolio-scroller {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, 1fr);
-    gap: 32px 24px; /* row-gap column-gap */
-    overflow-x: auto;
-    padding-bottom: 16px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-    scrollbar-color: #ccc #f5f5f5;
-}
-
-.portfolio-scroller::-webkit-scrollbar {
-    height: 8px;
-}
-.portfolio-scroller::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 4px;
-}
-
-.portfolio_box {
-    width: 320px; /* Adjust as needed for your design */
-    scroll-snap-align: start;
-}
 .portfolio_details_inner .row {
   margin-bottom: 65px; }
   @media (max-width: 480px) {
@@ -3003,29 +2959,6 @@ h6 {
 
   .header_area .navbar .nav .nav-item {
     margin-right: 0px; }
-
-.portfolio_box .single_portfolio img,
-.portfolio_box .single_portfolio video {
-    width: 100%;       /* MODIFIED for grid responsiveness */
-    height: 220px;       /* Set your desired height */
-    object-fit: cover;   /* Ensures content fills the box */
-	border-radius: 8px;  /* MODIFIED for consistency */
-    display: block;
-}
-
-.portfolio-scroller {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, 1fr);
-    gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 16px;
-    /* Optional: hide scrollbar for a cleaner look */
-    scrollbar-width: thin;
-    scrollbar-color: #ccc #f5f5f5;
-}
-
 
   .header_area + section,
   .header_area + row,
@@ -3358,37 +3291,59 @@ h6 {
    Custom Portfolio Carousel Styles
    ========================================================================== */
 
+/* This rule was slightly modified from the original to ensure responsive height and object-fit */
+.portfolio_box .single_portfolio img,
+.portfolio_box .single_portfolio video {
+    width: 100%;      
+    height: 220px;       
+    object-fit: cover;   
+	border-radius: 8px; 
+    display: block;
+}
+
+/* General styling for an individual project card wrapper */
+.portfolio_item {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
 .portfolio_box .short_info {
     margin-top: 20px;
     margin-bottom: 15px;
 }
 
+/* Main container for the carousel */
 .portfolio-carousel-container {
     position: relative;
     padding-bottom: 50px; /* Space for dots */
 }
 
+/* Wrapper to hide the overflow of the track */
 .portfolio-carousel-wrapper {
     overflow: hidden;
 }
 
+/* The element that moves horizontally to create the sliding effect */
 .portfolio-carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 
+/* A single "page" within the carousel that holds a grid of items */
 .portfolio-page {
     flex: 0 0 100%;
     width: 100%;
     display: grid;
+    /* Grid layout for desktop: 3 columns, 2 rows */
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto); /* 'auto' allows content to define row height */
     gap: 40px 30px; /* row-gap column-gap */
     padding: 0 5px; /* some padding to avoid touching edges */
     box-sizing: border-box;
 }
 
-/* Dots Navigation */
+/* Pagination dots container */
 .portfolio-dots-container {
     text-align: center;
     position: absolute;
@@ -3397,6 +3352,7 @@ h6 {
     left: 0;
 }
 
+/* Individual pagination dot */
 .portfolio-dot {
     display: inline-block;
     width: 12px;
@@ -3417,21 +3373,34 @@ h6 {
 	transform: scale(1.2);
 }
 
-/* Responsive adjustments */
+/* Message for when a filter returns no results */
+.no-projects-found {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 16px;
+    color: #777777;
+}
+
+
+/* --- Responsive adjustments for the carousel --- */
+
+/* For tablets and smaller desktops */
 @media (max-width: 991px) {
     .portfolio-page {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
     }
 }
 
+/* For mobile devices */
 @media (max-width: 767px) {
     .portfolio-page {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr; /* 1 column */
         gap: 50px;
     }
     
     .portfolio_box .single_portfolio img,
     .portfolio_box .single_portfolio video {
-        height: 250px; 
+        height: 250px; /* Taller images on mobile */
     }
 }
