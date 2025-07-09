@@ -25,6 +25,7 @@ Author E-mail: naimlasker@gmail.com
 /* Wide Mobile Layout: 480px */
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
+
 body {
   line-height: 26px;
   font-size: 15px;
@@ -2738,37 +2739,42 @@ h6 {
   width: auto !important; }
 
 .testi_item {
-  padding: 50px 55px;
-  margin-bottom: 200px;
-  margin-left: 10px;
-  margin: 0px 10px 80px;
-  box-shadow: 0px 15px 30px 0px rgba(221, 221, 221, 0.3);
-  -webkit-transition: all 0.4s ease 0s;
-  -moz-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s; }
-  @media (max-width: 991px) {
-    .testi_item {
-      margin-bottom: 0px; } }
-  @media (max-width: 575px) {
-    .testi_item {
-      padding: 30px 20px; } }
-  .testi_item img {
-    border-radius: 5px; }
-  .testi_item .col-lg-8 {
-    vertical-align: middle;
-    align-self: center; }
-  @media (max-width: 991px) {
-    .testi_item .testi_text {
-      margin-top: 50px; } }
-  .testi_item .testi_text h4 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    text-transform: uppercase; }
-  .testi_item .testi_text p {
-    margin-bottom: 0px; }
-  .testi_item:hover {
-    box-shadow: 0px 10px 20px 0px rgba(118, 85, 225, 0.1); }
+	padding: 50px 55px;
+	margin-bottom: 30px; // Changed from 200px to 30px
+	margin-left: 10px;
+	margin: 0px 10px 30px; // Changed from 80px to 30px
+	box-shadow: 0px 15px 30px 0px rgba(221, 221, 221, 0.3);
+	@include transition();
+	@media (max-width: 991px) {
+		margin-bottom: 0px;
+	}
+	@media (max-width: 575px) {
+		padding: 30px 20px;
+	}
+	img {
+		border-radius: 5px;
+	}
+	.col-lg-8 {
+		vertical-align: middle;
+		align-self: center;
+	}
+	.testi_text {
+		@media (max-width: 991px) {
+			margin-top: 50px;
+		}
+		h4 {
+			font-size: 20px;
+			margin-bottom: 15px;
+			text-transform: uppercase;
+		}
+		p {
+			margin-bottom: 0px;
+		}
+	}
+	&:hover {
+		box-shadow: 0px 10px 20px 0px rgba(118, 85, 225, 0.1);
+	}
+}
 
 /* End Testimonial Area css
 ============================================================================================ */
