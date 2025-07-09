@@ -59,7 +59,7 @@
 							<li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
 							<li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
 							<li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-						<!--	<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
+							<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -640,6 +640,41 @@
 	</section>
 	-->
 	<!--================ End Newsletter Area =================-->
+	<!--================ Start Contact Area =================-->
+	<section class="contact_area section_gap" id="contact">
+	  <div class="container">
+		<div class="row justify-content-center">
+		  <div class="col-lg-8">
+			<div class="main_title text-center">
+			  <h2>Contact Me</h2>
+			  <p>Feel free to reach out for collaborations or just a friendly hello!</p>
+			</div>
+			<form action="https://formspree.io/f/xyzwqpjw" method="POST" class="row contact_form" id="contactForm">
+			  <div class="col-md-6 form-group">
+				<input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+			  </div>
+			  <div class="col-md-6 form-group">
+				<input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+			  </div>
+			  <div class="col-12 form-group">
+				<input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+			  </div>
+			  <div class="col-12 form-group">
+				<textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
+			  </div>
+			  <div class="col-12 text-center">
+				<button type="submit" class="primary_btn"><span>Send Message</span></button>
+			  </div>
+			</form>
+			<div id="contact-success" class="alert alert-success text-center" style="display:none; margin-top:20px;">
+			  Thank you! Your message has been sent.
+			</div>
+
+		  </div>
+		</div>
+	  </div>
+	</section>
+<!--================ End Contact Area =================-->
 
 	<!--================Footer Area =================-->
 	<footer class="footer_area">
@@ -805,6 +840,31 @@
 	</script>
 	<script>
 			$(document).ready(function() {
+				$(function() {
+			$('#contactForm').on('submit', function(e) {
+			e.preventDefault();
+			var $form = $(this);
+			var $btn = $form.find('button[type="submit"]');
+			$btn.prop('disabled', true);
+
+			$.ajax({
+				url: $form.attr('action'),
+				method: 'POST',
+				data: $form.serialize(),
+				dataType: 'json',
+				success: function() {
+				$('#contact-success').fadeIn();
+				$form[0].reset();
+				$btn.prop('disabled', false);
+				},
+				error: function() {
+				$('#contact-success').removeClass('alert-success').addClass('alert-danger').text('Sorry, there was an error. Please try again later.').fadeIn();
+				$btn.prop('disabled', false);
+				}
+			});
+			});
+		});
+
 		  // Smooth scroll for navbar menu links
 		  $('.menu_nav .nav-link').on('click', function(event) {
 			if (this.hash && $(this.hash).length) {
