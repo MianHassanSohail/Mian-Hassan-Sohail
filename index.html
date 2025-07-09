@@ -54,27 +54,12 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav justify-content-end">
-							<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-							<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-							<li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-									<li class="nav-item"><a class="nav-link" href="portfolio-details.html">Portfolio Details</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Blog</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-								</ul>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						   <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+							<li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+							<li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+							<li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+						<!--	<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
 						</ul>
 					</div>
 				</div>
@@ -84,7 +69,7 @@
 	<!--================ End Header Area =================-->
 
 	<!--================ Start Home Banner Area =================-->
-	<section class="home_banner_area">
+	<section class="home_banner_area" id="home">
 		<div class="banner_inner">
 			<div class="container">
 				<div class="row">
@@ -111,7 +96,7 @@
 	<!--================ End Home Banner Area =================-->
 
 	<!--================ Start About Us Area =================-->
-	<section class="about_area section_gap">
+	<section class="about_area section_gap" id="about">
 		<div class="container">
 			<div class="row justify-content-start align-items-center">
 				<div class="col-lg-5">
@@ -185,7 +170,7 @@
 	-->
 	<!--================ End Features Area =================-->
 	<!--================ Srart Brand Area =================-->
-	<section class="brand_area section_gap_bottom">
+	<section class="brand_area section_gap_bottom" id="experience">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
@@ -435,7 +420,7 @@
 	<!--================End Portfolio Area =================-->
 
 	<!--================ Start Testimonial Area =================-->
-	<div class="testimonial_area section_gap_bottom">
+	<div class="testimonial_area section_gap_bottom" id="testimonials">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
@@ -819,6 +804,65 @@
 		});
 	</script>
 	<script>
+			$(document).ready(function() {
+		  // Smooth scroll for navbar menu links
+		  $('.menu_nav .nav-link').on('click', function(event) {
+			if (this.hash && $(this.hash).length) {
+			  event.preventDefault();
+			  var target = this.hash;
+			  var $target = $(target);
+
+			  $('html, body').animate({
+				scrollTop: $target.offset().top - 70
+			  }, 600, 'swing');
+			}
+		  });
+
+		  // Section highlighting on scroll
+		  var sectionIds = [];
+		  $('.menu_nav .nav-link').each(function() {
+			var href = $(this).attr('href');
+			if (href.startsWith('#') && $(href).length) {
+			  sectionIds.push(href);
+			}
+		  });
+
+		  function onScroll() {
+			var scrollPos = $(window).scrollTop() + 80; // 80px offset for header
+			var currentSection = sectionIds[0];
+
+			for (var i = 0; i < sectionIds.length; i++) {
+			  var section = $(sectionIds[i]);
+			  if (section.length && section.offset().top <= scrollPos) {
+				currentSection = sectionIds[i];
+			  }
+			}
+
+			$('.menu_nav .nav-item').removeClass('active');
+			$('.menu_nav .nav-link[href="' + currentSection + '"]').parent().addClass('active');
+		  }
+
+		  $(window).on('scroll', onScroll);
+		  onScroll(); // Initial call
+		});
+
+
+			$(document).ready(function() {
+		  // Smooth scroll for navbar menu links
+		  $('.menu_nav .nav-link').on('click', function(event) {
+			// Only handle anchor links with hashes
+			if (this.hash && $(this.hash).length) {
+			  event.preventDefault();
+			  var target = this.hash;
+			  var $target = $(target);
+
+			  // Animate scroll with offset for fixed header (adjust 70 if needed)
+			  $('html, body').animate({
+				scrollTop: $target.offset().top - 70
+			  }, 600, 'swing');
+			}
+		  });
+		});
 	  function toggleTestimonial() {
 		const container = document.getElementById('testimonial');
 		const toggleBtn = container.querySelector('.show-more');
