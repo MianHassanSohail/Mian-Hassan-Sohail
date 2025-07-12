@@ -502,6 +502,38 @@ button:focus {
     background: #4458dc;
     color: #fff; }
 
+..skills_area {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.skills-carousel-wrapper {
+  width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  scrollbar-width: none;
+  background: #fff; /* optional for clarity */
+}
+
+.skills-carousel-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.skills-carousel-track {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.skills-carousel-track img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 50px;
+}
+
+
 /* Causes Area css
 ============================================================================================ */
 .causes_slider .owl-dots {

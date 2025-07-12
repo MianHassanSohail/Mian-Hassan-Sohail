@@ -124,51 +124,42 @@
 		</div>
 	</section>
 	<!--================ End About Us Area =================-->
-	<!--================ Start Skill Area =================-->
-<!--
-	<section class="features_area">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-8 text-center">
-					<div class="main_title">
-						<h2>Skills </h2>
-					</div>
-				</div>
-			</div>
-			<div class="row feature_inner">
-				<div class="col-lg-3 col-md-6">
-					<div class="feature_item">
-						<img src="img/services/unity.png" alt="">
-						<h4>Game developing</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="feature_item">
-						<img src="img/services/s2.png" alt="">
-						<h4>UI/ux design</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="feature_item">
-						<img src="img/services/s3.png" alt="">
-						<h4>Web design</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="feature_item">
-						<img src="img/services/s4.png" alt="">
-						<h4>seo optimize</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	-->
-	<!--================ End Features Area =================-->
+	<!--================ Start Skills Area =================-->
+	<section class="skills_area section_gap" id="skills">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 text-center">
+      <div class="main_title">
+        <h2>Skills</h2>
+        <p>Technologies & tools I work with</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Remove container from here -->
+  <div class="skills-carousel-wrapper">
+    <div class="skills-carousel-track d-flex align-items-center justify-content-start px-5">
+      <img src="img/skills/unity.png" alt="Unity" class="mx-3" height="64">
+      <img src="img/skills/csharp.png" alt="csharp" class="mx-3" height="64">
+      <img src="img/skills/git.png" alt="git" class="mx-3" height="64">
+      <img src="img/skills/notion.png" alt="notion" class="mx-3" height="64">
+      <img src="img/skills/slack.png" alt="slack" class="mx-3" height="64">
+      <img src="img/skills/ps.png" alt="Photoshop" class="mx-3" height="64">
+      <img src="img/skills/blender.png" alt="Blender" class="mx-3" height="64">
+
+      <!-- Duplicated for looping effect -->
+      <img src="img/skills/unity.png" alt="Unity" class="mx-3" height="64">
+      <img src="img/skills/csharp.png" alt="csharp" class="mx-3" height="64">
+      <img src="img/skills/git.png" alt="git" class="mx-3" height="64">
+      <img src="img/skills/notion.png" alt="notion" class="mx-3" height="64">
+      <img src="img/skills/slack.png" alt="slack" class="mx-3" height="64">
+      <img src="img/skills/ps.png" alt="Photoshop" class="mx-3" height="64">
+      <img src="img/skills/blender.png" alt="Blender" class="mx-3" height="64">
+    </div>
+  </div>
+</section>
+
+<!--================ End Skills Area =================-->
+
 	<!--================ Srart Brand Area =================-->
 	<section class="brand_area section_gap_bottom" id="experience">
 		<div class="container">
@@ -839,31 +830,56 @@
 		});
 	</script>
 	<script>
-			$(document).ready(function() {
-				$(function() {
-			$('#contactForm').on('submit', function(e) {
-			e.preventDefault();
-			var $form = $(this);
-			var $btn = $form.find('button[type="submit"]');
-			$btn.prop('disabled', true);
 
-			$.ajax({
-				url: $form.attr('action'),
-				method: 'POST',
-				data: $form.serialize(),
-				dataType: 'json',
-				success: function() {
-				$('#contact-success').fadeIn();
-				$form[0].reset();
-				$btn.prop('disabled', false);
-				},
-				error: function() {
-				$('#contact-success').removeClass('alert-success').addClass('alert-danger').text('Sorry, there was an error. Please try again later.').fadeIn();
-				$btn.prop('disabled', false);
-				}
-			});
-			});
-		});
+	$(document).ready(function() {
+  var $track = $('.skills-carousel-track');
+  var scrollSpeed = 0.5; // pixels per frame, adjust for speed
+  var pos = 0;
+
+  // Calculate the width of the original set of images (half the track)
+  var images = $track.children('img');
+  var originalCount = images.length / 2;
+  var originalWidth = 0;
+  images.slice(0, originalCount).each(function() {
+    originalWidth += $(this).outerWidth(true);
+  });
+
+  function autoScroll() {
+    pos -= scrollSpeed;
+    if (Math.abs(pos) >= originalWidth) {
+      pos = 0; // Reset position instantly for seamless loop
+    }
+    $track.css('transform', 'translateX(' + pos + 'px)');
+    requestAnimationFrame(autoScroll);
+  }
+
+  autoScroll();
+});
+$(document).ready(function() {
+	$(function() {
+$('#contactForm').on('submit', function(e) {
+e.preventDefault();
+var $form = $(this);
+var $btn = $form.find('button[type="submit"]');
+$btn.prop('disabled', true);
+
+$.ajax({
+	url: $form.attr('action'),
+	method: 'POST',
+	data: $form.serialize(),
+	dataType: 'json',
+	success: function() {
+	$('#contact-success').fadeIn();
+	$form[0].reset();
+	$btn.prop('disabled', false);
+	},
+	error: function() {
+	$('#contact-success').removeClass('alert-success').addClass('alert-danger').text('Sorry, there was an error. Please try again later.').fadeIn();
+	$btn.prop('disabled', false);
+	}
+});
+});
+});
 
 		  // Smooth scroll for navbar menu links
 		  $('.menu_nav .nav-link').on('click', function(event) {
