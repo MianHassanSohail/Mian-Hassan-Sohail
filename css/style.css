@@ -1,4 +1,3 @@
-/*----------------------------------------------------
 @File: Default Styles
 @Author: SPONDON IT
 
@@ -85,31 +84,43 @@ button:focus {
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 .section_gap {
-  padding: 200px 0; }
-  @media (max-width: 1199px) {
-    .section_gap {
-      padding: 80px 0; } }
+  padding: 120px 0; /* Reduced from 200px */
+}
+@media (max-width: 1199px) {
+  .section_gap {
+    padding: 50px 0; /* Reduced from 80px */
+  }
+}
 
 .section_gap_top {
-  padding-top: 200px; }
-  @media (max-width: 1199px) {
-    .section_gap_top {
-      padding-top: 80px; } }
+  padding-top: 120px; /* Reduced from 200px */
+}
+@media (max-width: 1199px) {
+  .section_gap_top {
+    padding-top: 50px; /* Reduced from 80px */
+  }
+}
 
 .section_gap_bottom {
-  padding-bottom: 200px; }
-  @media (max-width: 1199px) {
-    .section_gap_bottom {
-      padding-bottom: 80px; } }
+  padding-bottom: 120px; /* Reduced from 200px */
+}
+@media (max-width: 1199px) {
+  .section_gap_bottom {
+    padding-bottom: 50px; /* Reduced from 80px */
+  }
+}
 
 /* Main Title Area css
 ============================================================================================ */
 .main_title {
   text-align: center;
-  margin-bottom: 100px; }
+  margin-bottom: 80px; /* Reduced from 100px */
+}
   @media (max-width: 1199px) {
     .main_title {
-      margin-bottom: 50px; } }
+      margin-bottom: 40px; /* Reduced from 50px */
+    }
+  }
   .main_title h2 {
     font-size: 36px;
     font-weight: 700;
@@ -950,22 +961,6 @@ button:focus {
   border-color: transparent;
   color: #fff; }
 
-.blog-pagination .page-link {
-  position: relative;
-  display: block;
-  padding: 0.5rem 0.75rem;
-  margin-left: -1px;
-  line-height: 1.25;
-  color: #8a8a8a;
-  border: none; }
-
-.blog-pagination .page-link .lnr {
-  font-weight: 600; }
-
-.blog-pagination .page-item:last-child .page-link,
-.blog-pagination .page-item:first-child .page-link {
-  border-radius: 0; }
-
 .blog-pagination .page-link:hover {
   color: #fff;
   text-decoration: none;
@@ -1156,9 +1151,10 @@ button:focus {
     .comment-form .form-control:focus {
       box-shadow: none;
       border: 1px solid #eee; }
-  .comment-form textarea.form-control {
-    height: 140px;
+  .comment-form textarea {
     resize: none; }
+    .comment-form textarea.form-control {
+      height: 134px; }
   .comment-form ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     font-size: 13px;
@@ -2492,10 +2488,13 @@ h6 {
 /* Start Barand Area css
 ============================================================================================ */
 .brand_area {
-  padding-bottom: 170px; }
+  padding-bottom: 100px; /* Reduced from 170px */
+}
   @media (max-width: 1199px) {
     .brand_area {
-      padding-bottom: 80px; } }
+      padding-bottom: 50px; /* Reduced from 80px */
+    }
+  }
 
 /* End Barand Area css
 ============================================================================================ */
@@ -2641,10 +2640,13 @@ h6 {
 /* Start Portfolio Area css
 ============================================================================================ */
 .portfolio_area {
-  padding-bottom: 120px; }
+  padding-bottom: 100px; /* Reduced from 120px */
+}
   @media (max-width: 991px) {
     .portfolio_area {
-      padding-bottom: 50px; } }
+      padding-bottom: 50px; /* Kept as 50px, consistent with other mobile sections */
+    }
+  }
   .portfolio_area .filters ul {
     padding-left: 0;
     margin-bottom: 50px; }
@@ -2748,7 +2750,9 @@ h6 {
 ============================================================================================ */
 .testimonial_area .owl-carousel .owl-dots {
   display: block !important;
-  text-align: center; }
+  text-align: center;
+  margin-top: 50px; /* Reduced from 80px */
+}
   .testimonial_area .owl-carousel .owl-dots .owl-dot {
     height: 10px;
     width: 10px;
