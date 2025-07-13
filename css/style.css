@@ -1,4 +1,4 @@
-@File: Default Styles
+﻿@File: Default Styles
 @Author: SPONDON IT
 
 This file contains the styling for the actual theme, this
@@ -3445,4 +3445,168 @@ h6 {
     .portfolio_box .single_portfolio video {
         height: 250px; /* Taller images on mobile */
     }
+}
+
+/* timeline css*/
+
+.timeline_section {
+  padding: 60px 20px;
+
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline_section h2 {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 32px;
+  color: #333;
+}
+
+/* Timeline container */
+.timeline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 0;
+}
+
+/* Central horizontal line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: #007bff;
+  z-index: 1;
+}
+
+/* Timeline item */
+.timeline-item {
+  position: relative;
+  width: calc(20% - 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+/* Dot */
+.dot {
+  width: 18px;
+  height: 18px;
+  background-color: #007bff;
+  border-radius: 50%;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 0 0 5px #f4f4f4;
+}
+
+/* Card Styles */
+.timeline-card {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;
+  max-width: 240px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: absolute;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 25px;
+  background: #007bff;
+  transform: translateX(-50%);
+}
+
+/* Positioning Top/Bottom */
+.timeline-card.top {
+  bottom: calc(50% + 30px);
+}
+
+.timeline-card.top::before {
+  top: 100%;
+}
+
+.timeline-card.bottom {
+  top: calc(50% + 30px);
+}
+
+.timeline-card.bottom::before {
+  bottom: 100%;
+}
+
+.timeline-card h4 {
+  margin: 0 0 5px;
+  color: #007bff;
+}
+
+.timeline-card p {
+  margin: 0;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Responsive behavior */
+@media (max-width: 1024px) {
+  .timeline-item {
+    width: 45%;
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline::before {
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 60px;
+  }
+
+  .dot {
+    margin: 20px 0;
+  }
+
+  .timeline-card {
+    position: relative;
+    margin-top: 10px;
+  }
+
+  .timeline-card.top,
+  .timeline-card.bottom {
+    top: auto;
+    bottom: auto;
+    margin: 10px 0;
+  }
+
+  .timeline-card::before {
+    display: none;
+  }
+
 }
