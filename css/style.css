@@ -2751,7 +2751,7 @@ h6 {
 .testimonial_area .owl-carousel .owl-dots {
   display: block !important;
   text-align: center;
-  margin-top: 50px; /* Reduced from 80px */
+ 
 }
   .testimonial_area .owl-carousel .owl-dots .owl-dot {
     height: 10px;
