@@ -524,7 +524,7 @@ button:focus {
   overflow-y: hidden;
   position: relative;
   scrollbar-width: none;
-  background: #fff; /* optional for clarity */
+  
 }
 
 .skills-carousel-wrapper::-webkit-scrollbar {
